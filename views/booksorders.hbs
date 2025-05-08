@@ -1,0 +1,61 @@
+<!-- Citation: Code from Node.JS Starter Guide used as template from source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+{{!-- Create a table --}}
+<h2>Dynamic Books on Orders Table</h2>
+<table id="booksorders-table" class="dynamic-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>BookOrder ID</th>
+            <th>Book Title</th>
+            <th>Order ID</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the bookOrderID, bookID, orderID, quantity --}}
+        {{#each data}}
+        <tr>
+            <td id="bookOrderID">{{this.bookOrderID}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.orderID}}</td>
+            <td>{{this.quantity}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- ADD BOOK TO ORDER FORM -->
+<div  class="form-box">
+<h2>Add a Book to an Order</h2>
+<p>To add a new book/order relationship, please enter the information below and click 'Submit'!</p>
+<form id="add-booksorders-form-ajax">
+    
+    <label for="input-orderid">Select an Order:</label>
+    <select name="input-orderid" id="input-orderid" required>
+        {{#each orders}}
+        <option value="{{this.orderID}}">{{this.orderID}}: {{this.fName}} {{this.lName}} - {{this.dateOrdered}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-book">Select a Book to Add:</label>
+    <select name="input-book" id="input-bookid" required>
+        {{#each books}}
+        <option value="{{this.bookID}}">{{this.bookID}}: {{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-quantity">Quantity: </label>
+    <input type="number" name="input-quantity" id="input-quantity" required></input>    
+
+    <input type="submit">
+</form>
+<script src="./js/add_booksorders.js"></script>
+</div>

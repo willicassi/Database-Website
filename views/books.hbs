@@ -1,0 +1,93 @@
+<!-- Citation: Code from Node.JS Starter Guide used as template from source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<h2>Dynamic Books Table</h2>
+
+<table id="books-table" class="dynamic-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Publisher</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the attributes in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.bookID}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.price}}</td>
+            <td>{{this.name}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- ADD BOOK FORM --}}
+<div class="form-box">
+<h2>Add a New Book</h2>
+<p>To add a new book, please enter the information below and click 'Submit'!</p>
+<form id="add-book-form-ajax">
+    
+    <label for="input-title">Title: </label>
+    <input type="text" name="input-title" id="input-title" required>
+
+    <label for="input-lname">Price: </label>
+    <input type="number" name="input-price" id="input-price">
+
+    <label for="input-publisher">Select a Publisher:</label>
+    <select name="input-publisher" id="input-publisher" required>
+        <option value="NULL">Self-Published *NULL</option>
+        {{#each publishers}}
+        <option value="{{this.name}}">{{this.publisherID}}: {{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_book.js"></script>
+</div>
+
+{{!-- UPDATE BOOK FORM --}}
+<div class="form-box">
+<h2>Update a Book</h2>
+<p>To update a Book, select a book from the dropdown then enter a new title, price, and select a publisher from the dropdown.</p>
+<form id="update-book-form-ajax">
+    <select name="input-bookid" id="input-bookid-update">
+        <option>Select a Book</option>
+        {{#each data}}
+        <option value="{{this.bookID}}">{{this.bookID}}: {{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-title">New Title: </label>
+    <input type="text" name="input-title" id="input-title-update" required>
+
+    <label for="input-price">New Price: </label>
+    <input type="number" name="input-price" id="input-price-update">
+
+    <label for="input-publisherid">Select a Publisher:</label>
+    <select name="input-publisherid" id="input-publisherid-update" required>
+        <option value="NULL">Self-Published *NULL</option>
+        {{#each publishers}}
+        <option value="{{this.publisherID}}">{{this.publisherID}}: {{this.name}}</option>
+        {{/each}}
+    </select>
+    
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_book.js"></script>
+</div>

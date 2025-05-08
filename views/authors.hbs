@@ -1,0 +1,49 @@
+<!-- Citation: Code from Node.JS Starter Guide used as template from source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<h2>Dynamic Author Table</h2>
+{{!-- Create a table --}}
+<table id="authors-table" class="dynamic-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Author ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.authorID}}</td>
+            <td>{{this.fName}}</td>
+            <td>{{this.lName}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<!-- ADD AUTHOR FORM -->
+<div  class="form-box">
+<h2>Add a New Author</h2>
+<p>To add a new author, please enter their information below and click 'Submit'!</p>
+<form id="add-author-form-ajax">
+    <label for="input-fname">First Name: </label>
+    <input type="text" name="input-fname" id="input-fname" required>
+    
+    <label for="input-lname">Last Name: </label>
+    <input type="text" name="input-lname" id="input-lname" required>
+
+    <input type="submit">
+</form>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_author.js"></script>
+</div>

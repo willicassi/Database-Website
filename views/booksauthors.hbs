@@ -1,0 +1,96 @@
+<!-- Citation: Code from Node.JS Starter Guide used as template from source: https://github.com/osu-cs340-ecampus/nodejs-starter-app -->
+
+<h2>Dynamic Book Author Table</h2>
+{{!-- Create a table --}}
+<table id="booksauthors-table" class="dynamic-table">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            <th>Book Author ID</th>
+            <th>Book Title</th>
+            <th>Author First Name</th>
+            <th>Author Last Name</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the rows in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.bookAuthorID}}</td>
+            <td>{{this.title}}</td>
+            <td>{{this.fName}}</td>
+            <td>{{this.lName}}</td>
+            <td class="delete"><button onclick="deleteBookAuthor({{this.bookAuthorID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_bookauthor.js"></script>
+
+<!-- ADD AUTHOR TO BOOK FORM -->
+<div  class="form-box">
+<h2>Add an Author to a Book</h2>
+<p>To add a new book/author relationship, please enter the information below and click 'Submit'!</p>
+<form id="add-booksauthors-form-ajax">
+    
+    <label for="input-title">Select a Book:</label>
+    <select name="input-title" id="input-title" required>
+        {{#each books}}
+        <option value="{{this.bookID}}">{{this.bookID}}: {{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-author">Select an Author:</label>
+    <select name="input-author" id="input-author">
+        {{#each authors}}
+        <option value="{{this.authorID}}">{{this.authorID}}: {{this.fName}} {{this.lName}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit">
+</form>
+
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_bookauthor.js"></script>
+</div>
+
+<div class="form-box">
+<h2>Update a Book Author</h2>
+<p>To update a BookAuthor relationship, select the relationship from the drop-down menu on the left then select a new title and/or author.</p>
+<form id="update-bookauthor-form-ajax">
+    <label for="input-bookauthorid">Select a BookAuthor Relationship:</label>
+    <select name="input-bookauthorid" id="input-bookauthorid-update" required>
+        {{#each data}}
+        <option value="{{this.bookAuthorID}}">{{this.bookAuthorID}}: {{this.title}} - {{this.fName}} {{this.lName}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-bookid">Select a Book:</label>
+    <select name="input-bookid" id="input-bookid-update" required>
+        {{#each books}}
+        <option value="{{this.bookID}}">{{this.bookID}}: {{this.title}}</option>
+        {{/each}}
+    </select>
+
+    <label for="input-authorid">Select an Author:</label>
+    <select name="input-authorid" id="input-authorid-update" required>
+        {{#each authors}}
+        <option value="{{this.authorID}}">{{this.authorID}}: {{this.fName}} {{this.lName}}</option>
+        {{/each}}
+    </select>
+    
+    <input type="submit">
+
+</form>
+
+<script src="./js/update_bookauthor.js"></script>
+</div>
