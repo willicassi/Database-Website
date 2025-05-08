@@ -1,0 +1,136 @@
+header {
+  background-color: #212529;
+  color: white;
+  padding: 15px;
+  height: 120px;
+}
+
+nav a {
+  color: #F4F16F;
+  padding-right: 5px;
+  font-size: 20px;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+body {
+  font-family: Montserrat;
+  margin: 0;
+}
+
+a:link { 
+    text-decoration: none; 
+  } 
+  a:visited { 
+    text-decoration: none; 
+  } 
+  a:hover { 
+    color: rgb(163, 160, 160);
+  } 
+  a:active { 
+    color: white;
+  }
+
+table, th, td {
+    border: 1px solid;
+    padding: 10px;
+    border-collapse: collapse;
+  }
+
+td {
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.main-content {
+  margin: 2%;
+}
+
+.btn-edit {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.btn-dlt {
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.btn-new {
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.new-th {
+    width: 50px;
+    
+}
+
+.btn-box {
+    width: 50px;
+    height:50px;
+}
+
+.main-menu {
+  margin-bottom: 5%;
+}
+
+.dynamic-table th {
+  background-color: #212529;
+  color: white;
+}
+
+.form-box {
+  background-color: #212529;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 15px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete {
+  background: red;
+}
+
+/* Input and button css from https://www.w3schools.com/howto/howto_css_stacked_form.asp */
+
+input[type="text"], input[type="number"], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #F4F16F;
+  color: #212529;
+  padding: 10px;
+  width: 100px;
+}
+
+input[type=submit]:hover {
+  background-color: #212529;
+  color: white;
+}
+
