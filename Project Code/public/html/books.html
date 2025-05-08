@@ -1,0 +1,292 @@
+<! ––
+Group 55: Meadowlark Books
+Step 3: Static HTML
+Utilized bsg_HTML provided
+ ––>
+
+<html>
+<head>
+    <title>Books</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+        function showform(dowhat) {
+            /*
+            * four DIVS: browse, insert, update, delete
+            * this function sets one visible the others not
+            */
+            if (dowhat == 'insert') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'block';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'none';
+            }
+            else if (dowhat == 'update') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'block';
+                document.getElementById('delete').style.display = 'none';
+            }
+            else if (dowhat == 'delete') {
+                document.getElementById('browse').style.display = 'none';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'block';
+            }
+            else if (dowhat == 'all') {
+                document.getElementById('browse').style.display = 'block';
+                document.getElementById('insert').style.display = 'block';
+                document.getElementById('update').style.display = 'block';
+                document.getElementById('delete').style.display = 'block';
+            }
+            else { //by default display browse
+                document.getElementById('browse').style.display = 'block';
+                document.getElementById('insert').style.display = 'none';
+                document.getElementById('update').style.display = 'none';
+                document.getElementById('delete').style.display = 'none';
+            }
+        }
+        function newBook() { showform('insert'); }
+        function updateBook(pid) { showform('update'); }
+        function deleteBook(pid) { showform('delete'); }
+        function browseBooks() { showform('browse'); }
+        function showAll() { showform('all'); }
+    </script>
+</head>
+
+<body onload="browseBooks()">
+    <h1>Books</h1>
+
+   [ <a href="index.html">Home</a> | <a href="customers.html">Customers</a> | <a href="orders.html">Orders</a> | <a href="books.html">Books</a> | <a href="authors.html">Authors</a> | <a href="publishers.html">Publishers</a> ]
+
+    <div id="browse">
+        <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th class="btn-box"><a href="#" onClick="newBook()" class="btn-new">New</a></th>
+                <th></th>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Publisher</th>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBook('this.BookID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBook('this.BookID')" class="btn-dlt">Delete</a></td>
+                <td align="right">1</td>
+                <td>Hello World: Programming 101</td>
+                <td>39.99</td>
+                <td>Miracle Publishing</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBook('this.BookID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBook('this.BookID')" class="btn-dlt">Delete</a></td>
+                <td align="right">2</td>
+                <td>Animal Farm</td>
+                <td>19.99</td>
+                <td>Signet Classic</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBook('this.BookID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBook('this.BookID')" class="btn-dlt">Delete</a></td>
+                <td align="right">3</td>
+                <td>Exhalation</td>
+                <td>29.99</td>
+                <td>Penguin Books</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBook('this.BookID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBook('this.BookID')" class="btn-dlt">Delete</a></td>
+                <td align="right">4</td>
+                <td>Good Omens</td>
+                <td>9.99</td>
+                <td>Workman</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBook('this.BookID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBook('this.BookID')" class="btn-dlt">Delete</a></td>
+                <td align="right">5</td>
+                <td>The Sandman</td>
+                <td>14.99</td>
+                <td>DC Comics</td>
+            </tr>
+        </table>
+	<p>Books Authors</p>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th class="btn-box"><a href="#" onClick="newBookAuthor()" class="btn-new">New</a></th>
+                <th></th>
+                <th>BookAuthor ID</th>
+                <th>Book Title</th>
+                <th>Author Name</th>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">1</td>
+                <td>Hello World: Programming 101</td>
+                <td>Professor Coder</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">2</td>
+                <td>Animal Farm</td>
+                <td>George Orwell</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">3</td>
+                <td>Exhalation</td>
+                <td>Ted Chiang</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">4</td>
+                <td>Good Omens</td>
+                <td>Neil Gaiman</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">5</td>
+                <td>Good Omens</td>
+                <td>Terry Pratchett</td>
+            </tr>
+            <tr>
+                <td class="btn-box"><a href="#" onClick="updateBookAuthor('this.BookAuthorID')" class="btn-edit">Edit</a></td>
+                <td class="btn-box"><a href="#" onclick="deleteBookAuthor('this.BookAuthorID')" class="btn-dlt">Delete</a></td>
+                <td align="right">6</td>
+                <td>The Sandman</td>
+                <td>Neil Gaiman</td>
+            </tr>
+        </table>
+        <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+        <form method="POST" id="addBook">
+            <legend><strong>Add Book</strong></legend>
+            <fieldset class="fields">
+                <label> Title </label> <input type="text" name="Title">
+                <label> Price </label> <input type="text" name="Price">
+                <label> Publisher </label> <select name="Publisher">
+                    <option value="NULL" selected>Self Publish (NULL)</option>
+                    <option value="1">1 Miracle Publishing</option>
+                    <option value="2">2 Signet Classic</option>
+                    <option value="3">3 Penguin Books</option>
+                    <option value="4">4 Workman</option>
+                    <option value="5">5 DC Comics</option>
+                </select>
+            </fieldset>
+            <input class="btn" type="submit" id="addBook" value="Add Book">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+        <form method="POST" id="addBookAuthor">
+            <legend><strong>Add Book Author</strong></legend>
+            <fieldset class="fields">
+                <label>Book Title </label> <select name="Book Title">
+                    <option value="0">&nbsp;</option>
+                    <option value="1" selected>1 Hello World: Programming 101</option>
+                    <option value="2">2 Animal Farm</option>
+                    <option value="3">3 Exhalation</option>
+                    <option value="4">4 Good Omens</option>
+                    <option value="5">5 The Sandman</option>
+                </select>
+                <label> Author </label> <select name="Author">
+                    <option value="0">&nbsp;</option>
+                    <option value="1" selected>1 Professor Coder</option>
+                    <option value="2">2 George Orwell</option>
+                    <option value="3">3 Ted Chiang</option>
+                    <option value="4">4 Neil Gaiman</option>
+                    <option value="5">5 Terry Pratchett</option>
+                </select>
+            </fieldset>
+            <input class="btn" type="submit" id="addBookAuthor" value="Add Book Author">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+    </div>
+    <p>&nbsp;</p>
+    <!-- UPDATES -->
+    <div id="update">
+        <!-- UPDATE Book -->
+        <form method="POST" id="UpdateBook">
+            <legend><strong>Update Book</strong></legend>
+            <fieldset class="fields">
+                <input type="hidden" name="BookID" id="updateBookID" value="1">
+                <label> ID: </label> 1
+                <label> Title </label> <input type="text" name="Title" value="Hello World: Programming 101">
+                <label> Price </label> <input type="text" name="Price" value="39.99">
+                <label> Publisher </label> <select name="Publisher">
+                    <option value="NULL">Self Publish (NULL)</option>
+                    <option value="1" selected>1 Miracle Publishing</option>
+                    <option value="2">2 Signet Classic</option>
+                    <option value="3">3 Penguin Books</option>
+                    <option value="4">4 Workman</option>
+                    <option value="5">5 DC Comics</option>
+                </select>
+            </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveBook" value="Save Update Book">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+        <!-- UPDATE BookAuthor -->
+	    <form method="POST" id="UpdateBookAuthor">
+            <legend><strong>Update Book Author</strong></legend>
+            <fieldset class="fields">
+                <input type="hidden" name="BookAuthorID" id="updateBookAuthorID" value="1">
+                <label> ID: </label> 1
+                <label> Title </label> <select name="Book Title">
+                    <option value="0">&nbsp;</option>
+                    <option value="1" selected>1 Hello World: Programming 101</option>
+                    <option value="2">2 Animal Farm</option>
+                    <option value="3">3 Exhalation</option>
+                    <option value="4">4 Good Omens</option>
+                    <option value="5">5 The Sandman</option>
+                </select>
+                <label> Author </label> <select name="Author">
+                    <option value="0">&nbsp;</option>
+                    <option value="1" selected>1 Professor Coder</option>
+                    <option value="2">2 George Orwell</option>
+                    <option value="3">3 Ted Chiang</option>
+                    <option value="4">4 Neil Gaiman</option>
+                    <option value="5">5 Terry Pratchett</option>
+                </select>
+            </fieldset>
+            <input class="btn" type="submit" id="UpdateSaveBookAuthor" value="Save Update Book Author">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+
+    </div>
+    <p>&nbsp;</p>
+    <!-- DELETE -->
+    <div id="delete" style="display: block">
+        <!-- DELETE Book -->
+        <form method="POST" id="deleteBook">
+            <legend><strong>Delete Book</strong></legend>
+            <fieldset class="fields">
+                <p>Are you sure you wish to delete the following?</p>
+                <input type="hidden" name="BookID" id="deleteBookID" value="1">
+                <label><strong>ID:</strong></label> 1
+                <label> <strong>Name</strong> </label> Hello World: Programming 101
+
+            </fieldset>
+            <input class="btn" type="submit" id="DeleteBook" value="Delete Book">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+        <!-- DELETE BookAuthor -->
+        <form method="POST" id="deleteBookAuthor">
+            <legend><strong>Delete Book Author</strong></legend>
+            <fieldset class="fields">
+                <p>Are you sure you wish to delete the following?</p>
+                <input type="hidden" name="BookAuthorID" id="deleteBookAuthorID" value="1">
+                <label><strong>ID:</strong></label> 1
+                <label> <strong>Title</strong> </label> Hello World: Programming 101
+                <label> <strong>Author</strong> </label> Professor Coder
+            </fieldset>
+            <input class="btn" type="submit" id="DeleteBookAuthor" value="Delete Book Author">
+            <input class="btn" type="button" value="cancel" onClick="browseBooks()">
+        </form>
+    </div><!-- delete -->
+
+</body>
+</html>
